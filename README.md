@@ -13,5 +13,6 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o coolsh ./coolsh is allowed to be invo
     BASSANAGA VI SAINT PAUL <saintbassanaga01@gmail.com>
     ABOMO KONO Murielle Ursull <amurielleursull@gmail.com>
 
+
 # More information
 ``CoolSH`` is a simple shell unix command interpreter that is part of the alx low level programming module at Alx School and is intended to emulate the basics sh shell. All the information given in this README is based on the sodash and bash man (1) pages.
