@@ -1,4 +1,4 @@
-#include "header.h"
+#include "holberton.h"
 
 /**
  * addSepNodeEnd - adds a separator found at the end
