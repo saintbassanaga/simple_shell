@@ -63,11 +63,12 @@ int main(int ac, char **av)
 	data_shell datash;
 	(void) ac;
 
-        signal(SIGINT, getSigint);
+	signal(SIGINT, getSigint);
 	set_data(&datash, av);
-        shellLoop(&datash);
+	shellLoop(&datash);
 	free_data(&datash);
 	if (datash.status < 0)
 		return (255);
 	return (datash.status);
 }
+

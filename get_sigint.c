@@ -9,3 +9,4 @@ void getSigint(int sig)
 	(void)sig;
 	write(STDOUT_FILENO, "\n^-^ ", 5);
 }
+

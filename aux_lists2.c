@@ -2,10 +2,9 @@
 
 /**
  * addRvarNode - adds a variable at the end
- * of a r_var list.
  * @head: head of the linked list.
  * @lvar: length of the variable.
- * @val: value of the variable.
+ * @var: value of the variable.
  * @lval: length of the value.
  * Return: address of the head.
  */
@@ -59,3 +58,4 @@ void freeRvarList(r_var **head)
 		*head = NULL;
 	}
 }
+

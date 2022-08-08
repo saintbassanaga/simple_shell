@@ -61,19 +61,17 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
 	for (i = 0; input[i]; i++)
 	{
 		if (input[i] == ';')
-                        addSepNodeEnd(head_s, input[i]);
-
+			addSepNodeEnd(head_s, input[i]);
 		if (input[i] == '|' || input[i] == '&')
 		{
-                        addSepNodeEnd(head_s, input[i]);
+			addSepNodeEnd(head_s, input[i]);
 			i++;
 		}
 	}
-
 	line = _strtok(input, ";|&");
 	do {
 		line = swap_char(line, 1);
-                addLineNodeEnd(head_l, line);
+		addLineNodeEnd(head_l, line);
 		line = _strtok(NULL, ";|&");
 	} while (line != NULL);
 
@@ -124,7 +122,6 @@ void go_next(sep_list **list_s, line_list **list_l, data_shell *datash)
 /**
  * split_commands - splits command lines according to
  * the separators ;, | and &, and executes them
- *
  * @datash: data structure
  * @input: input string
  * Return: 0 to exit, 1 to continue
@@ -150,19 +147,14 @@ int split_commands(data_shell *datash, char *input)
 		datash->args = split_line(datash->input);
 		loop = exec_line(datash);
 		free(datash->args);
-
 		if (loop == 0)
 			break;
-
 		go_next(&list_s, &list_l, datash);
-
 		if (list_l != NULL)
 			list_l = list_l->next;
 	}
-
-        freeSepList(&head_s);
+	freeSepList(&head_s);
 	free_line_list(&head_l);
-
 	if (loop == 0)
 		return (0);
 	return (1);
@@ -188,10 +180,8 @@ char **split_line(char *input)
 		write(STDERR_FILENO, ": allocation error\n", 18);
 		exit(EXIT_FAILURE);
 	}
-
 	token = _strtok(input, TOK_DELIM);
 	tokens[0] = token;
-
 	for (i = 1; token != NULL; i++)
 	{
 		if (i == bsize)
@@ -207,6 +197,5 @@ char **split_line(char *input)
 		token = _strtok(NULL, TOK_DELIM);
 		tokens[i] = token;
 	}
-
 	return (tokens);
 }

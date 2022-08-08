@@ -19,31 +19,27 @@ void checkEnv(r_var **h, char *in, data_shell *data)
 		for (j = 1, chr = 0; _envr[row][chr]; chr++)
 		{
 			if (_envr[row][chr] == '=')
-				{
-					lval = _strlen(_envr[row] + chr + 1);
-                                	addRvarNode(h, j, _envr[row] + chr + 1, lval);
-					return;
-				}
-
+			{
+				lval = _strlen(_envr[row] + chr + 1);
+				addRvarNode(h, j, _envr[row] + chr + 1, lval);
+				return;
+			}
 			if (in[j] == _envr[row][chr])
 				j++;
 			else
 				break;
 		}
 	}
-
 	for (j = 0; in[j]; j++)
-		{
-			if (in[j] == ' ' || in[j] == '\t' || in[j] == ';' || in[j] == '\n')
+	{
+		if (in[j] == ' ' || in[j] == '\t' || in[j] == ';' || in[j] == '\n')
 			break;
-		}
-
-        	addRvarNode(h, j, NULL, 0);
+	}
+	addRvarNode(h, j, NULL, 0);
 }
 
 /**
  * checkVars - check if the typed variable is $$ or $?
- *
  * @h: head of the linked list
  * @in: input string
  * @st: last status of the Shell
@@ -62,24 +58,23 @@ int checkVars(r_var **h, char *in, char *st, data_shell *data)
 		if (in[i] == '$')
 		{
 			if (in[i + 1] == '?')
-                                addRvarNode(h, 2, st, lst), i++;
+				addRvarNode(h, 2, st, lst), i++;
 			else if (in[i + 1] == '$')
-                                addRvarNode(h, 2, data->pid, lpd), i++;
+				addRvarNode(h, 2, data->pid, lpd), i++;
 			else if (in[i + 1] == '\n')
-                                addRvarNode(h, 0, NULL, 0);
+				addRvarNode(h, 0, NULL, 0);
 			else if (in[i + 1] == '\0')
-                                addRvarNode(h, 0, NULL, 0);
+				addRvarNode(h, 0, NULL, 0);
 			else if (in[i + 1] == ' ')
-                                addRvarNode(h, 0, NULL, 0);
+				addRvarNode(h, 0, NULL, 0);
 			else if (in[i + 1] == '\t')
-                                addRvarNode(h, 0, NULL, 0);
+				addRvarNode(h, 0, NULL, 0);
 			else if (in[i + 1] == ';')
-                                addRvarNode(h, 0, NULL, 0);
+				addRvarNode(h, 0, NULL, 0);
 			else
-                                checkEnv(h, in + i, data);
+				checkEnv(h, in + i, data);
 		}
 	}
-
 	return (i);
 }
 
@@ -150,9 +145,7 @@ char *rep_var(char *input, data_shell *datash)
 
 	status = auxItoa(datash->status);
 	head = NULL;
-
 	olen = checkVars(&head, input, status, datash);
-
 	if (head == NULL)
 	{
 		free(status);
@@ -161,23 +154,18 @@ char *rep_var(char *input, data_shell *datash)
 
 	indx = head;
 	nlen = 0;
-
 	while (indx != NULL)
 	{
 		nlen += (indx->len_val - indx->len_var);
 		indx = indx->next;
 	}
-
 	nlen += olen;
-
 	new_input = malloc(sizeof(char) * (nlen + 1));
 	new_input[nlen] = '\0';
 
 	new_input = replacedInput(&head, input, new_input, nlen);
-
 	free(input);
 	free(status);
-        freeRvarList(&head);
-
+	freeRvarList(&head);
 	return (new_input);
 }

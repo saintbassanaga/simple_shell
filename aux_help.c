@@ -78,3 +78,4 @@ void auxHelpExit(void)
 	help = "statusis that of the last command executed\n";
 	write(STDOUT_FILENO, help, _strlen(help));
 }
+

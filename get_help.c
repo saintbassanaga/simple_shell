@@ -9,24 +9,23 @@ int getHelp(data_shell *datash)
 {
 
 	if (datash->args[1] == 0)
-                auxHelpGeneral();
+		auxHelpGeneral();
 	else if (_strcmp(datash->args[1], "setenv") == 0)
-                auxHelpSetenv();
+		auxHelpSetenv();
 	else if (_strcmp(datash->args[1], "env") == 0)
-                auxHelpEnv();
+		auxHelpEnv();
 	else if (_strcmp(datash->args[1], "unsetenv") == 0)
-                auxHelpUnsetenv();
+		auxHelpUnsetenv();
 	else if (_strcmp(datash->args[1], "help") == 0)
-                auxHelp();
+		auxHelp();
 	else if (_strcmp(datash->args[1], "exit") == 0)
-                auxHelpExit();
+		auxHelpExit();
 	else if (_strcmp(datash->args[1], "cd") == 0)
-                auxHelpCd();
+		auxHelpCd();
 	else if (_strcmp(datash->args[1], "alias") == 0)
-                auxHelpAlias();
+		auxHelpAlias();
 	else
-		write(STDERR_FILENO, datash->args[0],
-		      _strlen(datash->args[0]));
+		write(STDERR_FILENO, datash->args[0], _strlen(datash->args[0]));
 
 	datash->status = 0;
 	return (1);
