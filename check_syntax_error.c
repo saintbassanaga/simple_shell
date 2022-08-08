@@ -161,17 +161,17 @@ int checkSyntaxError(data_shell *datash, char *input)
 
 	f_char = firstChar(input, &begin);
 	if (f_char == -1)
-	{
-                printSyntaxError(datash, input, begin, 0);
-		return (1);
-	}
+		{
+			printSyntaxError(datash, input, begin, 0);
+			return (1);
+		}
 
 	i = errorSepOp(input + begin, 0, *(input + begin));
 	if (i != 0)
-	{
-                printSyntaxError(datash, input, begin + i, 1);
-		return (1);
-	}
+		{
+			printSyntaxError(datash, input, begin + i, 1);
+			return (1);
+		}
 
 	return (0);
 }

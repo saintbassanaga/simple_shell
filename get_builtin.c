@@ -23,6 +23,5 @@ int (*getBuiltin(char *cmd))(data_shell *)
 		if (_strcmp(builtin[i].name, cmd) == 0)
 			break;
 	}
-
 	return (builtin[i].f);
 }
