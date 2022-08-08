@@ -19,11 +19,11 @@ void checkEnv(r_var **h, char *in, data_shell *data)
 		for (j = 1, chr = 0; _envr[row][chr]; chr++)
 		{
 			if (_envr[row][chr] == '=')
-			{
-				lval = _strlen(_envr[row] + chr + 1);
-                                addRvarNode(h, j, _envr[row] + chr + 1, lval);
-				return;
-			}
+				{
+					lval = _strlen(_envr[row] + chr + 1);
+                                	addRvarNode(h, j, _envr[row] + chr + 1, lval);
+					return;
+				}
 
 			if (in[j] == _envr[row][chr])
 				j++;
@@ -33,12 +33,12 @@ void checkEnv(r_var **h, char *in, data_shell *data)
 	}
 
 	for (j = 0; in[j]; j++)
-	{
-		if (in[j] == ' ' || in[j] == '\t' || in[j] == ';' || in[j] == '\n')
+		{
+			if (in[j] == ' ' || in[j] == '\t' || in[j] == ';' || in[j] == '\n')
 			break;
-	}
+		}
 
-        addRvarNode(h, j, NULL, 0);
+        	addRvarNode(h, j, NULL, 0);
 }
 
 /**
