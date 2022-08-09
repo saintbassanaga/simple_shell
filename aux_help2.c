@@ -4,7 +4,7 @@
  * auxHelp - Help information for the builtin help.
  * Return: no return
  */
-void auxHelp(void)
+oid auxHelp(void)
 {
 	char *help = "help: help [-dms] [pattern ...]\n";
 
@@ -18,7 +18,7 @@ void auxHelp(void)
  * auxHelpAlias - Help information for the builtin alias.
  * Return: no return
  */
-void auxHelpAlias(void)
+oid auxHelpAlias(void)
 {
 	char *help = "alias: alias [-p] [name[=value]...]\n";
 
