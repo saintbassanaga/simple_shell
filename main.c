@@ -6,7 +6,7 @@
  * @datash: data structure
  * Return: no return
  */
-oid free_data(data_shell *datash)
+void free_data(data_shell *datash)
 {
 	unsigned int i;
 
